@@ -30,3 +30,18 @@ if x > z:
 if y > z:
     y, z = z, y
 print("Liczby w kolejności od najmniejszej do najwiekszej to:", x, y , z)
+#zadanie 11
+import math
+a = int(input("Podaj liczbe a:"))
+b = int(input("Podaj liczbe b:"))
+c = int(input("Podaj liczbe c:"))
+delta = b**2 -4*a*c
+if delta > 0:
+    x1 = (-b-math.sqrt(delta))/(2*a)
+    x2 = (-b+math.sqrt(delta))/(2*a)
+    print(f"Miejsce zerowe: x1 = {x1}, x2 = {x2}")
+elif delta == 0:
+    x3 = -b/(2*a)
+    
+
+
