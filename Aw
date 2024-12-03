@@ -1,0 +1,34 @@
+from datetime import datetime, timedelta
+
+def oblicz_czas(ostatnie_laboratoria, data_kolokwium):
+    """
+    Funkcja oblicza liczbę dni od ostatnich laboratoriów i ile dni pozostało do kolokwium.
+    
+    :param ostatnie_laboratoria: data ostatnich laboratoriów w formacie YYYY-MM-DD (str)
+    :param data_kolokwium: data kolokwium w formacie YYYY-MM-DD (str)
+    """
+    try:
+        # Konwersja dat na obiekty datetime
+        data_lab = datetime.strptime(ostatnie_laboratoria, "%Y-%m-%d")
+        data_kol = datetime.strptime(data_kolokwium, "%Y-%m-%d")
+        dzis = datetime.today()
+        
+        # Obliczenia
+        dni_od_lab = (dzis - data_lab).days
+        dni_do_kol = (data_kol - dzis).days
+        
+        # Wyświetlanie wyników
+        print(f"Ostatnie laboratoria odbyły się {dni_od_lab} dni temu.")
+        if dni_do_kol > 0:
+            print(f"Do kolokwium pozostało {dni_do_kol} dni.")
+        elif dni_do_kol == 0:
+            print("Kolokwium jest dzisiaj!")
+        else:
+            print(f"Kolokwium odbyło się {-dni_do_kol} dni temu.")
+    except ValueError:
+        print("Niepoprawny format daty. Użyj formatu YYYY-MM-DD.")
+
+# Przykład użycia
+ostatnie_laboratoria = input("Podaj date ostatnich laboratoriow (YYYY-MM-DD): ")
+data_kolokwium = input("Podaj date kolokwium (YYYY-MM-DD): ")
+oblicz_czas(ostatnie_laboratoria, data_kolokwium)
